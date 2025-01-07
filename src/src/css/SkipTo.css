@@ -1,0 +1,93 @@
+.skip-to.popup {
+    position: absolute;
+    top: -30em; /* Initially hidden off-screen */
+    left: 0;
+  }
+  .skip-to,
+  .skip-to.popup.focus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+  }
+  .skip-to.fixed {
+    position: fixed;
+  }
+  .skip-to button {
+    position: relative;
+    margin: 0;
+    padding: 6px 8px;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-radius: 0 0 6px 6px;
+    border-color: #333;
+    color: #fff;
+    background-color: #333;
+    z-index: 200;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+  }
+  .skip-to .skip-to-tooltip {
+    position: absolute;
+    top: 2.25em;
+    left: 8em;
+    margin: 1px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 3px 5px #ddd;
+    background-color: #eee;
+    color: #000;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    width: auto;
+    display: none;
+    white-space: nowrap;
+    z-index: 201;
+  }
+  .skip-to .skip-to-tooltip.skip-to-show-tooltip {
+    display: block;
+  }
+  .skip-to [aria-expanded="true"] + .skip-to-tooltip.skip-to-show-tooltip {
+    display: none;
+  }
+  .skip-to [role="menu"] {
+    position: absolute;
+    min-width: 17em;
+    display: none;
+    margin: 0;
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  .skip-to [role="menuitem"] {
+    padding: 3px;
+    width: auto;
+    border: 0;
+    color: #333;
+    background-color: #fff;
+    z-index: 1000;
+    display: grid;
+    overflow-y: auto;
+    grid-template-columns: repeat(6, 1.2rem) 1fr;
+    grid-column-gap: 2px;
+    font-size: 1em;
+  }
+  .skip-to.focus {
+    display: block;
+  }
+  .skip-to button:focus,
+  .skip-to button:hover {
+    background-color: #fff;
+    color: #333;
+    outline: 0;
+  }
+  .skip-to [role="menuitem"]:focus {
+    padding: 1px;
+    border: 2px solid #333;
+    background-color: #ddd;
+    color: #000;
+    outline: 0;
+  }
