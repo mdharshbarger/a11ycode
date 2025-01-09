@@ -8,7 +8,7 @@ A collection of accessibility code exercises, each focusing on a specific aspect
 
 To get started with the exercises, follow these steps:
 
-1. Clone this repository: `git clone https://github.com/ScytheLocke/a11ycode.git`
+1. Clone this repository: `git clone https://github.com/mdharshbarger/a11ycode.git`
 2. Navigate to the project directory: `cd a11y-exercises`
 3. Open your project in Visual Studio Code.
 4. Install the "Live Server" extension from the Visual Studio Code marketplace.
@@ -18,7 +18,7 @@ To get started with the exercises, follow these steps:
 
 You can also view the `index.html` file by:
 - Clicking directly on `index.html` to open it in your default browser.
-- Visiting the [a11y exercises on GitHub Pages](https://scythelocke.github.io/a11ycode/) to access the exercises.
+- Visiting the [a11y exercises on GitHub Pages](https://mdharshbarger.github.io/a11ycode/) to access the exercises.
 
 ## Exercises
 
