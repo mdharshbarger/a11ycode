@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Aria-Live Region</title>
+  <style>
+    body {
+      font-size: 1.2rem;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    fieldset {
+      width: 50%;
+    }
+
+    #date-input, #date-output {
+      margin: 20px 0;
+    }
+
+    .primary-button {
+      margin: 10px 0;
+      padding: 10px 20px;
+      font-size: large;
+      background-color: #0000FF;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    textarea {
+      width: 50%;
+      height: 100px;
+      font-size: 16px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .char-count {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    #successMessage {
+      font-weight: bold;
+      color: blue;
+      padding-bottom: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>aria-live examples</h1>
+
+  <h2>1. Loader Announcement Example</h2>
+  <fieldset>
+    <legend>Create Account</legend>
+    <p aria-hidden="true">Fields with asterisks (*) are required.</p>
+    
+    <p>
+      <label for="username">Username<span aria-hidden="true">*</span>:</label>
+      <input type="text" id="username" name="username" aria-required="true">
+    </p>
+
+    <p id="mustmatch" style="display:none">Password fields must match</p>
+
+    <p>
+      <label for="password">Password<span aria-hidden="true">*</span>:</label>
+      <input type="password" id="password" aria-required="true">
+    </p>
+
+    <p>
+      <label for="password2">Re-enter password<span aria-hidden="true">*</span>:</label>
+      <input type="password" id="password2" aria-required="true" aria-describedby="mustmatch">
+    </p>
+
+    <button class="primary-button" id="loader">Submit</button>
+  </fieldset>
+
+  <div class="liveRegion" aria-live="polite">
+    <div class="hide">
+      <span class="sr-only">Loading information, please wait</span>
+      <img src="https://demo.infinititireadvantage.com/dist/assets/loaders/tire-spinner.gif" alt="Spinning loader animation">
+    </div>
+  </div>
+
+  <div id="successMessage" class="hide">
+    <div>Congratulations, your account is successfully created.</div>
+  </div>
+
+  <h2>2. Text Area Characters Left Example</h2>
+  <p id="textAreaLabel">Enter Your Text (Max 250 Characters)</p>
+  <textarea id="textInput" maxlength="250" aria-labelledby="textAreaLabel" placeholder="Type here..."></textarea>
+  <div class="char-count" id="charCount" aria-live="polite" aria-atomic="true">250 characters left</div>
+
+  <hr>
+
+  <h2>3. aria-atomic example</h2>
+  <div id="date-input">
+    <label for="year">Year:</label>
+    <input type="text" id="year" value="2024" />
+  </div>
+
+  <div id="date-output" aria-live="polite" aria-atomic="true">
+    The set year is: <span id="year-output">2024</span>
+  </div>
+
+  <button class="primary-button" id="submit">Submit</button>
+
+  <script>
+    document.getElementById('loader').addEventListener('click', createAccount);
+
+    function createAccount() {
+      const liveRegion = document.querySelector('.liveRegion');
+      liveRegion.innerHTML = `
+        <span class="sr-only">Loading information, please wait</span>
+        <img src="https://demo.infinititireadvantage.com/dist/assets/loaders/tire-spinner.gif" alt="Spinning loader animation">
+      `;
+
+      setTimeout(() => {
+        liveRegion.innerHTML = "";
+        const successMessageContainer = document.getElementById('successMessage');
+        successMessageContainer.classList.remove('hide');
+        successMessageContainer.setAttribute('tabindex', '-1');
+        successMessageContainer.focus();
+      }, 3000);
+    }
+
+    const textInput = document.getElementById('textInput');
+    const charCount = document.getElementById('charCount');
+    const maxLength = 250;
+
+    textInput.addEventListener('input', () => {
+      const remaining = maxLength - textInput.value.length;
+      charCount.textContent = `${remaining} characters left`;
+    });
+
+    document.getElementById('submit').addEventListener('click', function () {
+      const yearOut = document.getElementById("year-output");
+      yearOut.textContent = document.getElementById("year").value;
+    });
+  </script>
+  </main>
+</body>
+</html>
