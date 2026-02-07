@@ -106,3 +106,10 @@ legend {
         margin-top: 0.5rem;
     }
 }
+/* Remove default stying for fieldset */
+fieldset {
+    margin: 0;
+    margin-bottom:2rem;
+    padding: 0;
+    border: none;
+}
