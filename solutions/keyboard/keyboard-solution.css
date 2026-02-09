@@ -107,3 +107,14 @@ legend {
         margin-top: 0.5rem;
     }
 }
+/* Remove default stying for fieldset */
+fieldset {
+    margin: 0;
+    margin-bottom:2rem;
+    padding: 0;
+    border: none;
+}
+:focus {
+    outline: 3px solid #000000;
+    outline-offset: 2px;
+}

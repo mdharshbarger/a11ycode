@@ -36,7 +36,69 @@
                     <option value="advanced">advanced</option>
                 </select>    
                 <!-- Solution: used an HTML input type="submit" which is natively reachable and operable by keyboard -->
-                <input id="button" type="button" value="Submit" class="submit" onclick="alert('submitted')">  
+                 <fieldset>
+
+                <legend>Payment Options</legend>
+                <div class="accomodationContainer">
+                    <div>
+                        <input type="radio" name="accommodation" checked id="netBanking">
+                        <label for="netBanking">Netbanking</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="accommodation" id="creditCard">
+                        <label for="creditCard">Credit Card</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="accommodation" id="cashOnArrival">
+                        <label for="cashOnArrival">Cash on Arrival</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Dietary restrictions</legend>
+                <div class="dietContainer">
+                    <div>
+                        <input type="checkbox" name="diet" checked id="noDietaryRestrictions">
+                        <label for="noDietaryRestrictions">No dietary restrictions</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="diet" id="vegan">
+                        <label for="vegan">Vegan</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="checkbox" name="diet" id="vegetarian">
+                        <label for="vegetarian">Vegetarian</label>
+                    </div>
+
+                    <div class="input-container">
+                        <input type="checkbox" name="diet" id="kosher">
+                        <label for="kosher">Kosher</label>
+                    </div>
+
+                    <div class="input-container">
+                        <input type="checkbox" name="diet" id="halal">
+                        <label for="halal">Halal</label>
+                    </div>
+
+                    <div class="input-container">
+                        <input type="checkbox" name="diet" id="glutenFree">
+                        <label for="glutenFree">Gluten Free</label>
+                    </div>
+
+                    <div class="input-container">
+                        <input type="checkbox" name="diet" id="allergies">
+                        <label for="allergies">Allergies</label>
+                    </div>
+
+
+                </div>
+            </fieldset>
+                <input id="button" type="button" value="Submit" class="submit" onclick="alert('submitted')"> 
+                 
+
             </form>
              <!-- Solution: removed tabindex="0" -->
             <h2>Learn more about chess</h2>
